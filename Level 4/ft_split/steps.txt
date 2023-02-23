@@ -1,0 +1,23 @@
+1-> is whitespace
+2-> wordcounter
+3-> test them
+4-> next_valid_char
+5-> next_whitespace
+6-> lenstrcopy (will copy len bytes and append a '\0')
+7-> my_split (will have char *start, char *end, int worcount, int index, and char**split)
+
+
+my_split details:
+
+1->to count the number of words in the string in order to allocate enough space for **split
+2-> then we append a NULL pointer to the end of **split
+
+3-> then we start the loop (++index < wordcount) 
+{
+  start is the pointer to the first char of the word on str (hence next_valid_char(str))
+  end is the pointer to the first whitespace after it (hence next_whitespace(str))
+  the length of each word is given by (end - start) (sum 1 to it and that's how we allocate space for each)
+  split[index] is allocated with space for the null char
+  lenstrcopy copies len chars from its second parameter to it's first , append a null byte to it and doesnt return anything
+  str is set to end at the end of each iteration (a simple str = end)
+}
