@@ -82,34 +82,34 @@ static inline char	*next_valid_char(char *str)
 }
 
 // ------------------TEST-FUCKING-TEST----------------------//
-
-#include <stdio.h>
-#include <stdlib.h>
-
-static void			my_free_arr(char **arr, void **aux);
-static void			print_arr(char **arr);
-
-int	main(void)
-{
-	char	*s;
-	char	**split;
-
-	s = "         Hello World, this is a     test		";
-	split = my_split(s);
-	print_arr(split);
-	my_free_arr(split, (void **)split);
-	return (0);
-}
-
-static inline void	my_free_arr(char **arr, void **aux)
-{
-	while (arr && *arr)
-		free(*arr++);
-	free(aux);
-}
-
-static inline void	print_arr(char **arr)
-{
-	while (*arr)
-		printf("%s\n", *arr++);
-}
+//
+// #include <stdio.h>
+// #include <stdlib.h>
+//
+// static void			my_free_arr(char **arr, void **aux);
+// static void			print_arr(char **arr);
+//
+// int	main(void)
+// {
+// 	char	*s;
+// 	char	**split;
+//
+// 	s = "         Hello World, this is a     test		";
+// 	split = my_split(s);
+// 	print_arr(split);
+// 	my_free_arr(split, (void **)split);
+// 	return (0);
+// }
+//
+// static inline void	my_free_arr(char **arr, void **aux)
+// {
+// 	while (arr && *arr)
+// 		free(*arr++);
+// 	free(aux);
+// }
+//
+// static inline void	print_arr(char **arr)
+// {
+// 	while (*arr)
+// 		printf("%s\n", *arr++);
+// }
