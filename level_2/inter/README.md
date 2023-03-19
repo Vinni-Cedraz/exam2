@@ -5,7 +5,6 @@ Assignment name  : inter
 Expected files   : inter.c
 Allowed functions: write
 --------------------------------------------------------------------------------
-
 Write a program that takes two strings and displays, without doubles, the
 characters that appear in both strings, in the order they appear in the first
 one.
