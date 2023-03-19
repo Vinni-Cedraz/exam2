@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 22:32:48 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/03/19 12:26:06 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/03/19 18:47:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,37 +32,37 @@ void print_bits(char octet) {
 }
 
 static inline int my_putchar(char c) { return (write(1, &c, 1)); }
-
-int main() {
-  char num1 = 0b00000000;
-  print_bits(num1); // should print "00000000\n"
-  my_putchar('\n');
-  print_bits_rec(num1); // should print "00000000\n"
-  my_putchar('\n');
-
-  char num2 = 0b11111111;
-  print_bits(num2); // should print "11111111\n"
-  my_putchar('\n');
-  print_bits_rec(num2); // should print "11111111\n"
-  my_putchar('\n');
-
-  char num3 = 0b01010101;
-  print_bits(num3); // should print "01010101\n"
-  my_putchar('\n');
-  print_bits_rec(num3); // should print "01010101\n"
-  my_putchar('\n');
-
-  char num4 = 0b10000000;
-  print_bits(num4); // should print "10000000\n"
-  my_putchar('\n');
-  print_bits_rec(num4); // should print "10000000\n"
-  my_putchar('\n');
-
-  char num5 = 0b00110001;
-  print_bits(num5); // should print "00110001\n"
-  my_putchar('\n');
-  print_bits_rec(num5); // should print "00110001\n"
-  my_putchar('\n');
-
-  return 0;
-}
+//
+// int main() {
+//   char num1 = 0b00000000;
+//   print_bits(num1); // should print "00000000\n"
+//   my_putchar('\n');
+//   print_bits_rec(num1); // should print "00000000\n"
+//   my_putchar('\n');
+//
+//   char num2 = 0b11111111;
+//   print_bits(num2); // should print "11111111\n"
+//   my_putchar('\n');
+//   print_bits_rec(num2); // should print "11111111\n"
+//   my_putchar('\n');
+//
+//   char num3 = 0b01010101;
+//   print_bits(num3); // should print "01010101\n"
+//   my_putchar('\n');
+//   print_bits_rec(num3); // should print "01010101\n"
+//   my_putchar('\n');
+//
+//   char num4 = 0b10000000;
+//   print_bits(num4); // should print "10000000\n"
+//   my_putchar('\n');
+//   print_bits_rec(num4); // should print "10000000\n"
+//   my_putchar('\n');
+//
+//   char num5 = 0b00110001;
+//   print_bits(num5); // should print "00110001\n"
+//   my_putchar('\n');
+//   print_bits_rec(num5); // should print "00110001\n"
+//   my_putchar('\n');
+//
+//   return 0;
+// }
