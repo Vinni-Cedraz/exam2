@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 22:32:48 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/03/18 22:46:17 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/03/19 12:26:06 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,11 @@
 static int my_putchar(char c);
 static void create_stack(unsigned char octet, int counter);
 
-void print_bits_rec(unsigned char octet) { 
-  create_stack(octet, 8); 
-}
-
+void print_bits_rec(unsigned char octet) { create_stack(octet, 7); }
 static inline void create_stack(unsigned char octet, int counter) {
-  if (counter > 0) {
+  if (counter > 0)
     create_stack(octet >> 1, counter - 1);
-    my_putchar((octet & 1) + '0');
-  }
-}
-
-static inline int my_putchar(char c) { 
-  return (write(1, &c, 1));
+  my_putchar((octet & 1) + '0');
 }
 
 void print_bits(char octet) {
@@ -38,6 +30,8 @@ void print_bits(char octet) {
     mask >>= 1;
   }
 }
+
+static inline int my_putchar(char c) { return (write(1, &c, 1)); }
 
 int main() {
   char num1 = 0b00000000;
