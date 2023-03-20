@@ -7,4 +7,6 @@ all:
 	@./wdmatch "faya" "fgvvfdxcacpolhyghbred" | cat -e
 	@./wdmatch "quarante deux" "qfqfsudf arzgsayns tsregfdgs sjytdekuoixq " | cat -e
 	@./wdmatch "error" rrerrrfiiljdfxjyuifrrvcoojh | cat -e
+	@./wdmatch "localidade" "vmnolbvmbnlcalidade" | cat -e
+	@./wdmatch "localidade" "vmnolbvmbnlocalidade" | cat -e
 	@./wdmatch | cat -e
