@@ -9,6 +9,10 @@ compile:
 	$(CC) $(CFLAGS) $(SRC)
 
 run:
-	$(RUN) "abc"
+	$(RUN) "abc" | cat  -e
 	$(RUN) "My horse is Amazing." | cat -e
+	$(RUN) "a-b-c-" | cat -e
+	$(RUN) "z-y0x0" | cat -e
+	$(RUN) "nnnn" | cat -e
+	$(RUN) "nnnn" "aaaa" | cat -e
 	$(RUN) | cat -e

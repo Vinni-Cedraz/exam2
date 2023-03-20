@@ -1,71 +1,47 @@
 #include <unistd.h>
 
-static int			ft_putchar(char c);
-static int			ascii_convert(int pos, char c);
-static int			alpha_pos(char c);
-static int			alpha_mirror(char c);
-static int			is_alpha(char c);
+static int ft_putchar(char c);
+static int conv_pos_to_ascii(int pos, char c);
+static int alphabetical_position(char c);
+static int alpha_pos_of_mirrored(char c);
+static int is_alpha(char c);
 
-int	main(int argc, char *argv[])
-{
-	int		i;
-	char	c;
-	int		mirrored_position;
-
-	c = 1;
-	i = -1;
-	if (argc != 2)
-		return (ft_putchar('\n'));
-	while (c)
-	{
-		c = argv[1][++i];
-		mirrored_position = alpha_mirror(c);
-		if (mirrored_position)
-			c = ascii_convert(mirrored_position, c);
-		ft_putchar(c);
-	}
-	ft_putchar('\n');
+int main(int argc, char *argv[]) {
+    if (argc != 2) return (ft_putchar('\n'));
+    char c, mirrored_char = 0;
+    while ((c = *argv[1]++)) {
+        if ((mirrored_char = conv_pos_to_ascii(alpha_pos_of_mirrored(c), c)))
+            ft_putchar(mirrored_char);
+    }
+    ft_putchar('\n');
 }
 
-static inline int	alpha_mirror(char c)
-{
-	double	mirror_dist;
-	double	mirrored_position;
-
-	if (!is_alpha(c))
-		return (0);
-	mirror_dist = 13.5 - alpha_pos(c);
-	mirrored_position = (2 * mirror_dist) + alpha_pos(c);
-	return (mirrored_position);
+static inline int alpha_pos_of_mirrored(char c) {
+    if (!is_alpha(c)) return (0);
+    double dist_frm_mirror, alpha_pos_of_mirrored_c, mirrorInTheMiddle;
+    mirrorInTheMiddle = 13.5;
+    dist_frm_mirror = mirrorInTheMiddle - alphabetical_position(c);
+    alpha_pos_of_mirrored_c = (2 * dist_frm_mirror) + alphabetical_position(c);
+    return (alpha_pos_of_mirrored_c);
 }
 
-static inline int	is_alpha(char c)
-{
-	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+static inline int is_alpha(char c) {
+    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }
 
-static inline int	ft_putchar(char c)
-{
-	if (!c)
-		return (0);
-	return (write(1, &c, 1));
+static inline int ft_putchar(char c) {
+    if (!c) return (0);
+    return (write(1, &c, 1));
 }
 
-static inline int	alpha_pos(char c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (c - 96);
-	else if (c >= 'A' && c <= 'Z')
-		return (c - 64);
-	else
-		return (0);
+static inline int alphabetical_position(char c) {
+    if (c >= 'a' && c <= 'z') return (c - 96);
+    if (c >= 'A' && c <= 'Z') return (c - 64);
+    return (0);
 }
 
-static inline int	ascii_convert(int pos, char c)
-{
-	if (!pos)
-		return (0);
-	if (c >= 'a' && c <= 'z')
-		return (pos + 96);
-	return (pos + 64);
+static inline int conv_pos_to_ascii(int pos, char c) {
+    if (!pos) return (0);
+    if (c >= 'a' && c <= 'z') return (pos + 96);
+    return (pos + 64);
 }

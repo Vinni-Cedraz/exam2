@@ -8,63 +8,54 @@ static inline int handle_negative(const char **str);
 static inline int is_valid_number(const char(*str));
 
 int my_atoi(const char *str) {
-  int i = -1;
-  int res = 0;
-  int len;
-  int sign = 1;
-
-  if (!str)
-    return (0);
-  while (is_whitespace(*str))
-    str++;
-  if (!is_valid_number(str))
-    return (0);
-  sign = handle_negative(&str);
-  len = my_strlen(str);
-  while (++i < len) {
-    res += ((str[i] - '0') * how_mny_zeros(len - i - 1));
-  }
-  return (res * sign);
+    int i = -1;
+    int res = 0;
+    if (!str) return 0;
+    while (is_whitespace(*str)) str++;
+    if (!is_valid_number(str)) return 0;
+    int sign = handle_negative(&str);
+    int len = my_strlen(str);
+    while (++i < len) res += ((str[i] - '0') * how_mny_zeros(len - i - 1));
+    return res * sign;
 }
 
 static inline int is_valid_number(const char(*str)) {
-  while (*str && !is_whitespace(*str)) {
-    if ((*str < '0' || *str > '9') && *str != '-' && *str != '+')
-      return (0);
-    str++;
-  }
-  return 1;
+    while (*str && !is_whitespace(*str)) {
+        if ((*str < '0' || *str > '9') && *str != '-' && *str != '+')
+            return (0);
+        str++;
+    }
+    return 1;
 }
 
 static inline int is_whitespace(char c) {
-  return (c == ' ' || ('\t' <= c && c <= '\r'));
+    return (c == ' ' || ('\t' <= c && c <= '\r'));
 }
 
 static inline int my_strlen(const char *str) {
-  const char *end = str;
-  while (*end && !is_whitespace(*end))
-    end++;
-  return (end - str);
+    const char *end = str;
+    while (*end && !is_whitespace(*end)) end++;
+    return (end - str);
 }
 
 static inline int how_mny_zeros(int diff) {
-  int res = 1;
-  while (diff) {
-    res *= 10;
-    diff--;
-  }
-  return (res);
+    int res = 1;
+    while (diff) {
+        res *= 10;
+        diff--;
+    }
+    return (res);
 }
 
 static inline int handle_negative(const char **str) {
-  int sign = 1;
-  if (**str == '-' || **str == '+') {
-    if (**str == '-')
-      sign = -1;
-    (*str)++;
-  }
-  return (sign);
+    int sign = 1;
+    if (**str == '-' || **str == '+') {
+        if (**str == '-') sign = -1;
+        (*str)++;
+    }
+    return (sign);
 }
+
 //
 // #include <assert.h>
 //
