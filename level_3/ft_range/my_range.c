@@ -7,8 +7,8 @@ int *my_range(int start, int end) {
         int *arr = tmp;
         while ((start - 1) < end) *tmp++ = start++;
         return arr;
-    } else if (end < 0) {
-        int *arr = malloc(sizeof(int) * (-end - -start) + 1);
+    } else if (start > end) {
+        int *arr = malloc(sizeof(int) * (start - end) + 1);
         int *tmp = arr;
         while ((start + 1) > end) *tmp++ = start--;
         return arr;
@@ -19,16 +19,17 @@ int *my_range(int start, int end) {
 }
 
 // int main(void) {
-//     int a, b;
-//     a = -2;
-//     b = 2;
+//     int a, b, count;
+//     a = 5;
+//     b = 5;
 //     int *arr = my_range(a, b);
 //     int *tmp = arr;
 //     b = b > 0 ? b : -b;
-//     int count = b - a + 1;
-//     if (count > 0)
-//         while (count--) printf("%d ", *arr++);
-//     else
-//         printf("%d", *arr);
+//     if (a > b && b > 0) {
+//         count = (a - b + 1);
+//     } else {
+//         count = b - a + 1;
+//     }
+//     while (count--) printf("%d ", *arr++);
 //     free(tmp);
 // }
