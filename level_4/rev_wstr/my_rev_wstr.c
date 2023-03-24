@@ -1,15 +1,14 @@
 #include <unistd.h>
 
-static int my_putnstr(char *str, int n) {
-    while (n-- && *str) write(1, str++, 1);
-    write(1, " ", 1);
-    return 0;
-}
-
 static char *next_word(char *s) {
     while (*s != ' ' && *s != '\t' && *s != '\0') s++;
     if (!*s) return (NULL);
     return (s + 1);
+}
+
+static void my_putnstr(char *str, int n) {
+    while (n--) write(1, str++, 1);
+    write(1, " ", 1);
 }
 
 static char my_strlen(char *str) {
