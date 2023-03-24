@@ -24,6 +24,21 @@ int ft_strcmp(void *s1, void *s2)
 	return (str1[i] - str2[i]);
 }
 
+void	ft_lstfree(t_list **list)
+{
+	t_list *tmp;
+
+	tmp = *list;
+	if (list == NULL)
+		return ;
+	while (tmp)
+	{
+		*list = tmp->next;
+		free(tmp);
+		tmp = *list;
+	}
+}
+
 int		main(void)
 {
 	char straa[] = "String aa";
@@ -55,4 +70,5 @@ int		main(void)
 	printf("----------\n");
 	my_list_remove_if(begin_list, straa, ft_strcmp);
 	print_list(begin_list);
+	ft_lstfree(begin_list);
 }
