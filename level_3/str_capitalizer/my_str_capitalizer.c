@@ -1,18 +1,21 @@
 #include <unistd.h>
-int is_lower(char c) {
-    if (c >= 'a' && c <= 'z') return 1;
-    return 0;
+
+static int is_lower(char c) { return (c >= 'a' && c <= 'z'); }
+static int is_upper(char c) { return ((c >= 'A' && c <= 'Z')); }
+static int is_whitespace(char c) { return (c == ' ' || c == '\t'); }
+static int putc(char c) { return write(1, &c, 1); }
+static void putstrcapi(char *s);
+
+int main(int ac, char **av) {
+    int i = 0;
+    if (ac == 1) return putc('\n');
+    while (++i < ac) {
+        putstrcapi(av[i]);
+        putc('\n');
+    }
 }
 
-int is_upper(char c) {
-    if (c >= 'A' && c <= 'Z') return 1;
-    return 0;
-}
-
-int is_whitespace(char c) { return (c == ' ' || c == '\t'); }
-int putc(char c) { return write(1, &c, 1); }
-
-void putstrcapi(char *s) {
+static void putstrcapi(char *s) {
     if (!s) return;
     if (is_upper(*s)) putc(*s);
     if (is_lower(*s)) putc((*s) - 32);
@@ -26,15 +29,6 @@ void putstrcapi(char *s) {
             putc((*s) + 32);
         else
             putc(*s);
-                s++;
-    }
-}
-
-int main(int ac, char **av) {
-    int i = 0;
-    if (ac == 1) return putc('\n');
-    while (++i < ac) {
-        putstrcapi(av[i]);
-        putc('\n');
+        s++;
     }
 }
