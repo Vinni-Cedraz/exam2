@@ -14,13 +14,13 @@ int main(int argc, char **argv) {
     my_putchar('\n');
 }
 
-static inline int it_is_there(char current_char, char *argv2) {
+static int it_is_there(char current_char, char *argv2) {
     while (*argv2)
         if (current_char == *argv2++) return 1;
     return 0;
 }
 
-static inline int not_already_printed(char c) {
+static int not_already_printed(char c) {
     int search_index = 0;
     static int placement_index;
     static char printed[__INT_MAX__] = {0};
@@ -31,7 +31,7 @@ static inline int not_already_printed(char c) {
     return 1;
 }
 
-static inline int my_putchar(char c) {
+static int my_putchar(char c) {
     write(1, &c, 1);
     return (0);
 }
