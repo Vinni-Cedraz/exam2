@@ -12,6 +12,8 @@ int main(int argc, char *argv[]) {
     while ((c = *argv[1]++)) {
         if ((mirrored_char = conv_pos_to_ascii(alpha_pos_of_mirrored(c), c)))
             ft_putchar(mirrored_char);
+        else
+            ft_putchar(c);
     }
     ft_putchar('\n');
 }
