@@ -6,5 +6,8 @@ static inline unsigned int gcd(unsigned int a, unsigned int b) {
 }
 
 unsigned int lcm(unsigned int a, unsigned int b) {
-	return (a * b / gcd(a, b));
+    int aa = (int)a;
+    int bb = (int)b;
+	if (aa <= 0 || bb <= 0) return 0;
+    return (a * b / gcd(a, b));
 }

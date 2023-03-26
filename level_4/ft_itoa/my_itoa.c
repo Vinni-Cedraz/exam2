@@ -1,58 +1,51 @@
-#include <assert.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   my_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/26 15:32:09 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/03/26 15:32:54 by vcedraz-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
-#include <string.h>
 
-char *strcpyrev(char *str, int len) {
-    int i = 0;
-    int last = len;
-    char *revcpy = malloc((len + 1) * sizeof(char));
-    while (len) revcpy[i++] = str[--len];
-    revcpy[last] = '\0';
-    free(str);
-    return (revcpy);
-}
-
-int my_numlen(int nbr) {
-    int i = 1;
-    if (!nbr) return (1);
-    if (nbr == -2147483648) nbr++;
-    if (nbr < 0) {
-        i++;
-        nbr = -nbr;
-    }
-    while (nbr && i++) nbr /= 10;
-    return (i - 1);
-}
+static int numlen(int n);
+static void build_str(int nbr, char *str, char **iter);
 
 char *my_itoa(int nbr) {
-    int numlen = my_numlen(nbr);
-    char *ascii = malloc(sizeof(char) * (numlen + 1));
-    int n_iter = nbr;
-    int i = 0;
-
-    // edge cases:
-    ascii[numlen] = '\0';
-    if (!n_iter) {
-        ascii[0] = '0';
-        return (ascii);
-    }
-    if (n_iter == -2147483648) n_iter++;
-    if (n_iter < 0) {
-        ascii[numlen - 1] = '-';
-        n_iter = -n_iter;
-    }
-
-    // main loop
-    while (n_iter) {
-        ascii[i++] = (n_iter % 10) + '0';
-        n_iter /= 10;
-    }
-    if (nbr == -2147483648) ascii[0] = 8 + '0';
-    return (strcpyrev(ascii, numlen));
+    int strlen = numlen(nbr);
+    char *str = malloc(sizeof(char) * strlen);
+    char *iter = str;
+    if (nbr < 0) *iter = '-', nbr *= -1, iter++;
+    build_str(nbr, str, &iter);
+    *iter = '\0';
+    if (nbr == __INT_MAX__) str[strlen - 1] = '8';
+    return (str);
 }
 
-int main() {
+static int numlen(int n) {
+    int len = 0;
+    if (n < 0) len++, n *= -1;
+    while (n) n /= 10, len++;
+    return len;
+}
+
+static void build_str(int nbr, char *str, char **iter) {
+    if (nbr > 9) build_str(nbr / 10, str, iter);
+    *(*iter)++ = (nbr % 10) + '0';
+}
+
+// ------------TESTS ---------------
+
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+
+int main(void) {
     char *test;
 
     test = my_itoa(1234);
@@ -76,7 +69,7 @@ int main() {
     test = my_itoa(-12999812);
     assert(!strcmp("-12999812", test));
     free(test);
-    test = my_itoa(-2147483648);
+    test = my_itoa(-__INT_MAX__);
     assert(!strcmp("-2147483648", test));
     free(test);
     printf("all tests passed!");

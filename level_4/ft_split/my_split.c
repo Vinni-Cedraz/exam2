@@ -26,73 +26,63 @@ char **my_split(char *str) {
     return (split);
 }
 
-static inline int wordcounter(char *s) {
-    int inside_word;
-    int words;
-
-    inside_word = 0;
-    words = 0;
+static int wordcounter(char *s) {
+    int inside_word = 0;
+	int last_char = 0;
+    int wd_count = 0;
     while (*s) {
-        if (is_whitespace(*s))
-            inside_word = 0;
-        else if (!inside_word) {
-            words++;
-            inside_word = 1;
-        }
+        inside_word = is_whitespace(*s) ? 0 : 1;
+		last_char = is_whitespace(*(s + 1)) ? 1 : 0;
+        if (inside_word && last_char) wd_count++;
         s++;
     }
-    return (words);
+    return (wd_count);
 }
 
-static inline void lenstrcopy(char *s1, char *s2, int len) {
+static void lenstrcopy(char *s1, char *s2, int len) {
     int i = -1;
     while (++i < len && s2[i]) s1[i] = s2[i];
     s1[i] = '\0';
 }
 
-static inline int is_whitespace(char c) {
+static int is_whitespace(char c) {
     return (c == ' ' || c == '\t' || c == '\0');
 }
 
-static inline char *next_whitespace(char *str) {
+static char *next_whitespace(char *str) {
     while (!is_whitespace(*str)) str++;
     return (str);
 }
 
-static inline char *next_valid_char(char *str) {
+static char *next_valid_char(char *str) {
     while (is_whitespace(*str)) str++;
     return (str);
 }
 
 // ------------------TEST-FUCKING-TEST----------------------//
-//
-// #include <stdio.h>
-// #include <stdlib.h>
-//
-// static void			my_free_arr(char **arr, void **aux);
-// static void			print_arr(char **arr);
-//
-// int	main(void)
-// {
-// 	char	*s;
-// 	char	**split;
-//
-// 	s = "         Hello World, this is a     test		";
-// 	split = my_split(s);
-// 	print_arr(split);
-// 	my_free_arr(split, (void **)split);
-// 	return (0);
-// }
-//
-// static inline void	my_free_arr(char **arr, void **aux)
-// {
-// 	while (arr && *arr)
-// 		free(*arr++);
-// 	free(aux);
-// }
-//
-// static inline void	print_arr(char **arr)
-// {
-// 	while (*arr)
-// 		printf("%s\n", *arr++);
-// }
+
+#include <stdio.h>
+#include <stdlib.h>
+
+static void my_free_arr(char **arr, void **aux);
+static void print_arr(char **arr);
+
+int main(void) {
+    char *s;
+    char **split;
+
+    s = "         Hello World, this is a     test		";
+    split = my_split(s);
+    print_arr(split);
+    my_free_arr(split, (void **)split);
+    return (0);
+}
+
+static inline void my_free_arr(char **arr, void **aux) {
+    while (arr && *arr) free(*arr++);
+    free(aux);
+}
+
+static inline void print_arr(char **arr) {
+    while (*arr) printf("%s\n", *arr++);
+}

@@ -19,6 +19,7 @@ int main(int argc, char **argv) {
     my_putchar('\n');
 }
 
+// if you get some weird memory error substitute intmax for a smaller number
 static inline int was_not_already_printed(char c) {
     int search_index = 0;
     static int placement_index;

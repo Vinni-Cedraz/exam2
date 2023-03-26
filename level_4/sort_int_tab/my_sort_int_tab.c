@@ -1,7 +1,5 @@
 
-
 static void			swap_it(int *a, int *b);
-
 static int			pair_not_sorted(int a, int b);
 
 

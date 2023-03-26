@@ -1,0 +1,38 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    step_by_step_guide_to_my_split.txt                 :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/26 18:04:04 by vcedraz-          #+#    #+#              #
+#    Updated: 2023/03/26 18:07:28 by vcedraz-         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+// better to do things in the following order:
+1-> is whitespace
+2-> wordcounter
+3-> test them both
+4-> next_valid_char
+5-> next_whitespace
+6-> test them both
+7-> lenstrcopy (will copy len bytes and append a '\0')
+8-> test lenstrcopy
+9-> my_split (will have the variables: char *start, char *end, int worcount, int index, and char**split)
+
+my_split implementation details:
+
+1=> count the number of words in the string in order to allocate enough space for **split
+2==> then we append a NULL pointer to the end of **split
+3===> then we start the loop 
+
+(++index < wordcount) 
+{
+  start is a pointer to the first valid char (non-whitespace) on str (hence next_valid_char(str));
+  end is the pointer to the first whitespace after it (hence next_whitespace(str));
+  the length of each word is given by (end - start);
+  split[index] is allocated with +1 space for the '\0' char;
+  lenstrcopy copies len chars from its second parameter to it's first, appends a null byte to it and doesnt return anything;
+  str is set to end (next_whitespace) at the end of each iteration (a simple str = end);
+}

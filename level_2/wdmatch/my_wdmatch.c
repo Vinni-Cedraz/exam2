@@ -16,9 +16,8 @@ static inline int is_it_there(char *str2, char c) {
 int main(int argc, char **argv) {
     int index = 0;
     char *res = argv[1];
-    while (argc == 3 && argv[1] && *argv[1]) {
+    while (argc == 3 && argv[1] && *argv[1])
         index = is_it_there(argv[2], *argv[1]++);
-    }
     if (index) my_putstr(res);
     my_putstr("\n");
 }
