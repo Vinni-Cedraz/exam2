@@ -3,7 +3,7 @@ SRC = my_alpha_mirror.c
 RUN = ./my_alpha_mirror
 CFLAGS = -Wall -Wextra -Werror -O3
 
-all: compile run
+all: compile
 
 compile:
 	$(CC) $(CFLAGS) $(SRC) -o $(RUN)
