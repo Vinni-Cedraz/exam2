@@ -18,9 +18,10 @@ int main(int argc, char *argv[]) {
 
 static inline int alpha_pos_of_mirrored(char c) {
     if (!is_alpha(c)) return (0);
-    double dist_frm_mirror, alpha_pos_of_mirrored_c, mirrorInTheMiddle;
-    mirrorInTheMiddle = 13.5;
-    dist_frm_mirror = mirrorInTheMiddle - alphabetical_position(c);
+    double dist_frm_mirror, alpha_pos_of_mirrored_c, mid_mirror;
+
+    mid_mirror = 13.5;
+    dist_frm_mirror = mid_mirror - alphabetical_position(c);
     alpha_pos_of_mirrored_c = (2 * dist_frm_mirror) + alphabetical_position(c);
     return (alpha_pos_of_mirrored_c);
 }

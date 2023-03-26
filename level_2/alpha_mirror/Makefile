@@ -1,12 +1,12 @@
 # variable
 SRC = my_alpha_mirror.c
-RUN = ./a.out
-CFLAGS = -Wall -Wextra -Werror -g
+RUN = ./my_alpha_mirror
+CFLAGS = -Wall -Wextra -Werror -O3
 
-all: compile run
+all: compile
 
 compile:
-	$(CC) $(CFLAGS) $(SRC)
+	$(CC) $(CFLAGS) $(SRC) -o $(RUN)
 
 run:
 	$(RUN) "abc" | cat  -e
