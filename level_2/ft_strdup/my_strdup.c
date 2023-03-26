@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-static inline int my_strlen(char *str) {
+static inline int len(char *str) {
   char *end = str;
   while (end && *end)
     end++;
@@ -11,10 +11,10 @@ static inline int my_strlen(char *str) {
 
 char *my_strdup(char *src) {
   char *dup, *res;
-  res = dup = malloc(my_strlen(src) * sizeof(char) + 1);
+  res = dup = malloc(len(src) * sizeof(char) + 1);
   while (src && *src)
     *dup++ = *src++;
-  dup[my_strlen(src)] = '\0';
+  dup[len(src)] = '\0';
   return (res);
 }
 

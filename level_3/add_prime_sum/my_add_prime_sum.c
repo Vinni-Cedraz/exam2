@@ -19,7 +19,8 @@ int main(int argc, char *argv[]) {
 
 static int miniatoi(char *a, int toi) {
     if (!*a) return toi;
-    toi = toi * 10 + *a - '0';
+	int digit = *a - '0';
+    toi = toi * 10 + digit;
     return miniatoi(a + 1, toi);
 }
 
