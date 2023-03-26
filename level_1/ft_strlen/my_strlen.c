@@ -1,9 +1,6 @@
-int	my_strlen(char *str)
-{
-	char *end;
-
-	end = str;
-	while (end && *end)
-		end++;
-	return (end - str);
+int my_strlen(char *str) {
+    char *start = str;
+    if (str)
+        while (*str) str++;
+    return (str - start);
 }

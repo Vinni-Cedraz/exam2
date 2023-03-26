@@ -1,4 +1,5 @@
 #include "my_strcpy.c"
+#include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 
@@ -14,11 +15,11 @@ static void	my_putstr(char *str)
 }
 int main(void)
 {
-	char dest[256] = "hello world";
-	char src[256] = "HELLO";
+	char *dest = malloc(256);
+	char src[] = "ok, this here gotta be in dest now";
 
+	// dest = NULL;
 	my_strcpy(dest, src);
-	// strcpy("", src);
 	my_putstr(dest);
-	my_putstr(src);
+	// my_putstr(src);
 }

@@ -1,8 +1,7 @@
 #include <assert.h>
 #include "my_strlen.c"
+#include <stdio.h>
 #include <string.h>
-
-int	my_strlen(char *str);
 
 int main(void)
 {
@@ -13,5 +12,8 @@ int main(void)
 	assert(my_strlen(string2) == (int)strlen(string2));
 	assert(my_strlen(string3) == (int)strlen(string3));
 	assert(my_strlen(" ") == (int)strlen(" "));
+	assert(my_strlen("") == (int)strlen(""));
+	assert(my_strlen(NULL) == 0); // segfault check
 	assert(my_strlen("\n") == (int)strlen("\n"));
+	printf("all tests passed!");
 }
