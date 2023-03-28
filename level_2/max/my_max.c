@@ -1,25 +1,33 @@
-int my_max(int *tab, unsigned int len) {
-    int max = 0;
-    while (tab && len--) {
-        if (*tab > max) max = *tab;
-        tab++;
+int my_max(int arr[], int n) {
+    int max = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max) max = arr[i];
     }
-    return (max);
+    return max;
 }
 
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <time.h>
-// int main() {
-//     int j = -1;
-// 	int len = 119;
-//     int tab[len];
-//
-// 	srand(time(NULL));
-// 	while (++j < len) tab[j++] = random() % len;
-//     j = -1;
-//     while (++j < len) printf("%d ", tab[j]);
-//     printf("\n");
-//     printf("\n");
-//     printf("%d\n", my_max(tab, len));
-// }
+int my_min(int arr[], int n) {
+    int smallest = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] < smallest) smallest = arr[i];
+    }
+    return smallest;
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int main() {
+    int arr[] = {1, 9, 2, 3, 4, -5, 7, 32, -45, 11, 87, 43, 6, 8};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int smallest = my_min(arr, n);
+	int biggest = my_max(arr, n);
+    int j = -1;
+
+    j = -1;
+    while (++j < n) printf("%d ", arr[j]);
+    printf("\n");
+    printf("\n");
+    printf("%d\n", my_min(arr, n));
+    printf("%d\n", my_max(arr, n));
+}
