@@ -1,12 +1,12 @@
 #include <unistd.h>
 
-static inline int my_putstr(char *s) {
+static  int my_putstr(char *s) {
     while (s && *s) write(1, s++, 1);
     write(1, "\n", 1);
     return 0;
 }
 
-static inline int it_is_there(char c, char *s2) {
+static  int it_is_there(char c, char *s2) {
     static int index;
     while (s2[index])
         if (c == s2[index++]) return 1;

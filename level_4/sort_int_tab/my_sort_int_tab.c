@@ -23,12 +23,12 @@ void	my_sort_int_tab(int *tab, unsigned int size)
 //---------------------AUXILIARY--------------------
 
 
-static inline int	pair_not_sorted(int a, int b)
+static  int	pair_not_sorted(int a, int b)
 {
 	return (a > b);
 }
 
-static inline void	swap_it(int *a, int *b)
+static  void	swap_it(int *a, int *b)
 {
 	int	tmp;
 
@@ -53,7 +53,7 @@ static inline void	swap_it(int *a, int *b)
 // 		my_sort_int_tab(tab, size);
 // }
 //
-// static inline int	tab_not_sorted(int *tab, int size)
+// static  int	tab_not_sorted(int *tab, int size)
 // {
 // 	int	i;
 //

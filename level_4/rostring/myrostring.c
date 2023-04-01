@@ -27,9 +27,9 @@ int main(int argc, char **argv) {
 
 // ------------------------------- //
 
-static inline int is_whitespace(char c) { return (c == ' ' || c == '\t'); }
+static  int is_whitespace(char c) { return (c == ' ' || c == '\t'); }
 
-static inline char *next_valid_char(char *s) {
+static  char *next_valid_char(char *s) {
     while (is_whitespace(*s)) s++;
     if (*s == '\0') return (NULL);
     return (s);
@@ -37,7 +37,7 @@ static inline char *next_valid_char(char *s) {
 
 /* Simply returns the next valid char after a whitespace is
    found. if no whitespace is found it returns NULL */
-static inline char *get_next_word(char *s) {
+static  char *get_next_word(char *s) {
     while (s && *s) {
         if (is_whitespace(*s)) return (next_valid_char(s));
         s++;
@@ -45,7 +45,7 @@ static inline char *get_next_word(char *s) {
     return (NULL);
 }
 
-static inline int my_putuntil(char *s) {
+static  int my_putuntil(char *s) {
     while (s && *s) {
         write(1, s++, 1);
         if (is_whitespace(*s)) break;

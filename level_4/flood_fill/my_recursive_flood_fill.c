@@ -25,17 +25,17 @@ void recursive_flood_fill(char **tab, t_point size, t_point begin) {
 
 //---------------------------------AUXILIARY----------------------------------//
 
-static inline int right_is_zone(char **tab, t_point cur, char c, t_point size) {
+static  int right_is_zone(char **tab, t_point cur, char c, t_point size) {
     return (cur.x + 1 < size.x && tab[cur.y][cur.x + 1] == c);
 }
-static inline int down_is_zone(char **tab, t_point cur, char c, t_point size) {
+static  int down_is_zone(char **tab, t_point cur, char c, t_point size) {
     return (cur.y + 1 < size.y && tab[cur.y + 1][cur.x] == c);
 }
-static inline int up_is_zone(char **tab, t_point cur, char c, t_point size) {
+static  int up_is_zone(char **tab, t_point cur, char c, t_point size) {
     (void)size;
     return (cur.y - 1 >= 0 && tab[cur.y - 1][cur.x] == c);
 }
-static inline int left_is_zone(char **tab, t_point cur, char c, t_point size) {
+static  int left_is_zone(char **tab, t_point cur, char c, t_point size) {
     (void)size;
     return (cur.x - 1 >= 0 && tab[cur.y][cur.x - 1] == c);
 }

@@ -1,13 +1,13 @@
 #include <unistd.h>
 
-static inline int is_lower(char c) { return (c >= 'a' && c <= 'z'); }
+static  int is_lower(char c) { return (c >= 'a' && c <= 'z'); }
 
-static inline void putlower(char *c) {
+static  void putlower(char *c) {
   char lower = *c + 32;
   write(1, &lower, 1);
 }
 
-static inline void write_loop(char *s) {
+static  void write_loop(char *s) {
   while (s && *s) {
     if (is_lower(*s))
       write(1, s, 1);

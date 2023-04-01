@@ -1,12 +1,12 @@
 #include <unistd.h>
 
-static inline int my_putchar(char c) {
+static  int my_putchar(char c) {
     write(1, &c, 1);
     return 0;
 }
 
-static inline int is_whitespace(char c) { return (c == ' ' || c == '\t'); }
-static inline char *next_word(char *s) {
+static  int is_whitespace(char c) { return (c == ' ' || c == '\t'); }
+static  char *next_word(char *s) {
     while (*s && is_whitespace(*s)) s++;
     if (*s == '\0') return NULL;
     return s;

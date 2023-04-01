@@ -1,10 +1,10 @@
 #include <unistd.h>
 
-static inline void my_putstr(char *str) {
+static  void my_putstr(char *str) {
     while (str && *str) write(1, str++, 1);
 }
 
-static inline int is_it_there(char *str2, char c) {
+static  int is_it_there(char *str2, char c) {
     static int index;
     while (str2[index]) {
         if (str2[index] == c) return (1);

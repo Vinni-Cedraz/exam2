@@ -39,7 +39,7 @@ int	main(void)
 	write(1, "\n", 1);
 }
 
-static inline void	print_number(int number)
+static  void	print_number(int number)
 {
     static const char str[10] = {"0123456789"};
     int digits[10];
@@ -58,27 +58,27 @@ static inline void	print_number(int number)
 	write(1, "\n", 1);
 }
 
-static inline short	is_divisible_by_three(int i)
+static  short	is_divisible_by_three(int i)
 {
 	return (!(i % 3));
 }
 
-static inline short	is_divisible_by_five(int i)
+static  short	is_divisible_by_five(int i)
 {
 	return (!(i % 5));
 }
 
-static inline short is_divisible_by_seven(int i)
+static  short is_divisible_by_seven(int i)
 {
 	return (!(i % 7));
 }
 
-static inline short is_divisible_by_eleven(int i)
+static  short is_divisible_by_eleven(int i)
 {
 	return (! (i % 11));
 }
 
-static inline short	is_divisible_by_three_and_five(int i)
+static  short	is_divisible_by_three_and_five(int i)
 {
 	return (!(i % 3) && !(i % 5));
 }

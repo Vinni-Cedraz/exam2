@@ -1,14 +1,14 @@
 #include <unistd.h>
 
-static inline int is_whitespace(char c) { return (c == ' ' || c == '\t'); }
+static  int is_whitespace(char c) { return (c == ' ' || c == '\t'); }
 
-static inline char *next_char(char *str) {
+static  char *next_char(char *str) {
     while (*str && is_whitespace(*str)) str++;
     if (*str == '\0') return (NULL);
     return str;
 }
 
-static inline int my_putchar(char c) {
+static  int my_putchar(char c) {
     write(1, &c, 1);
     return 0;
 }

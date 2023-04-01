@@ -24,7 +24,7 @@ int	main(void)
 	ft_lstprint(&node);
 }
 
-static inline void	ft_lstadd_back(t_list **lst, t_list *new)
+static  void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*temp;
 
@@ -42,7 +42,7 @@ static inline void	ft_lstadd_back(t_list **lst, t_list *new)
 	new->next = NULL;
 }
 
-static inline t_list	*ft_lstnew(int data)
+static  t_list	*ft_lstnew(int data)
 {
 	t_list	*node;
 
@@ -52,7 +52,7 @@ static inline t_list	*ft_lstnew(int data)
 	return (node);
 }
 
-static inline void	print_number(int number)
+static  void	print_number(int number)
 {
 	int					digits[10];
 	int					i;
@@ -71,12 +71,12 @@ static inline void	print_number(int number)
 	}
 }
 
-static inline size_t	aux_putchar(char c)
+static  size_t	aux_putchar(char c)
 {
 	return (write(1, &c, 1));
 }
 
-static inline void	ft_lstprint(t_list **lst)
+static  void	ft_lstprint(t_list **lst)
 {
 	t_list	*tmp;
 

@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <unistd.h>
 
-static inline int my_putchar(char c) {
+static  int my_putchar(char c) {
     write(1, &c, 1);
     return 0;
 }
 
-static inline void my_putnbr(int nbr) {
+static  void my_putnbr(int nbr) {
     if (nbr > 9) my_putnbr(nbr / 10);
     my_putchar((nbr % 10) + '0');
 }

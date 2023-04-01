@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-static inline int len(char *str) {
+static  int len(char *str) {
   char *end = str;
   while (end && *end)
     end++;

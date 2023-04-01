@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
 }
 
 // if you get some weird memory error substitute intmax for a smaller number
-static inline int was_not_already_printed(char c) {
+static  int was_not_already_printed(char c) {
     int search_index = 0;
     static int placement_index;
     static char printed[__INT_MAX__] = {0};
@@ -31,7 +31,7 @@ static inline int was_not_already_printed(char c) {
     return 1;
 }
 
-static inline int my_putchar(char c) {
+static  int my_putchar(char c) {
     write(1, &c, 1);
     return 0;
 }

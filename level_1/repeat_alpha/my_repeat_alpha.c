@@ -36,7 +36,7 @@ static void	init_variables(char *c, char **str, int *i, int *j, char **argv)
 	*j = 0;
 }
 
-static inline int	how_many_times(char c)
+static  int	how_many_times(char c)
 {
 	int	times;
 
@@ -49,23 +49,23 @@ static inline int	how_many_times(char c)
 	return (times);
 }
 
-static inline void repeat_alpha(char c, int j)
+static  void repeat_alpha(char c, int j)
 {
 	while (j--)
 		my_putchar(c);
 }
 
-static inline int	my_putchar(char c)
+static  int	my_putchar(char c)
 {
 	return (write(1, &c, 1));
 }
 
-static inline int	is_lower(char c)
+static  int	is_lower(char c)
 {
 	return (c <= 122 && c >= 97);
 }
 
-static inline int	is_upper(char c)
+static  int	is_upper(char c)
 {
 	return (c >= 65 && c <= 90);
 }

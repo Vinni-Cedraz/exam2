@@ -6,12 +6,12 @@ struct s_list
 	t_list  *next;
 };
 
-static inline int cmp_ascending(int a, int b)
+static  int cmp_ascending(int a, int b)
 {
 	return (a <= b);
 }
 
-static inline int cmp_descending(int a, int b)
+static  int cmp_descending(int a, int b)
 {
 	return (a >= b);
 }

@@ -78,11 +78,11 @@ int main(void) {
     return (0);
 }
 
-static inline void my_free_arr(char **arr, void **aux) {
+static  void my_free_arr(char **arr, void **aux) {
     while (arr && *arr) free(*arr++);
     free(aux);
 }
 
-static inline void print_arr(char **arr) {
+static  void print_arr(char **arr) {
     while (*arr) printf("%s\n", *arr++);
 }

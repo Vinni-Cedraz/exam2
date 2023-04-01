@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     ft_putchar('\n');
 }
 
-static inline int alpha_pos_of_mirrored(char c) {
+static  int alpha_pos_of_mirrored(char c) {
     if (!is_alpha(c)) return (0);
     double dist_frm_mirror, alpha_pos_of_mirrored_c, mid_mirror;
 
@@ -28,22 +28,22 @@ static inline int alpha_pos_of_mirrored(char c) {
     return (alpha_pos_of_mirrored_c);
 }
 
-static inline int is_alpha(char c) {
+static  int is_alpha(char c) {
     return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }
 
-static inline int ft_putchar(char c) {
+static  int ft_putchar(char c) {
     if (!c) return (0);
     return (write(1, &c, 1));
 }
 
-static inline int alphabetical_position(char c) {
+static  int alphabetical_position(char c) {
     if (c >= 'a' && c <= 'z') return (c - 96);
     if (c >= 'A' && c <= 'Z') return (c - 64);
     return (0);
 }
 
-static inline int conv_pos_to_ascii(int pos, char c) {
+static  int conv_pos_to_ascii(int pos, char c) {
     if (!pos) return (0);
     if (c >= 'a' && c <= 'z') return (pos + 96);
     return (pos + 64);

@@ -1,17 +1,17 @@
 #include <unistd.h>
 
-static inline int is_upper(char c) { return (c >= 'A') && (c <= 'Z'); }
-static inline int is_alpha(char c) { return (c >= 'a' && c <= 'z'); }
-static inline int my_putchar(char c) { return (write(1, &c, 1)); }
+static  int is_upper(char c) { return (c >= 'A') && (c <= 'Z'); }
+static  int is_alpha(char c) { return (c >= 'a' && c <= 'z'); }
+static  int my_putchar(char c) { return (write(1, &c, 1)); }
 
-static inline int is_last_char(char *c) {
+static  int is_last_char(char *c) {
     if ((*c != ' ' || *c != '\t') &&
         (*(c + 1) == '\0' || *(c + 1) == '\t' || *(c + 1) == ' '))
         return (1);
     return (0);
 }
 
-static inline void my_rstr(char *s) {
+static  void my_rstr(char *s) {
     while (*s) {
         if (!is_last_char(s) && !is_upper(*s)) {
             my_putchar(*s);

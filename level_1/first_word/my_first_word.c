@@ -22,7 +22,7 @@ int	main(int argc, char *argv[])
 	return (write(1, "\n", 1));
 }
 
-static inline int	is_whitespace(char c)
+static  int	is_whitespace(char c)
 {
 	return (c == ' ' || c == '\t');
 }

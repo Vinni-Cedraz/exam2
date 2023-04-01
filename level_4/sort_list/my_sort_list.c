@@ -27,7 +27,7 @@ t_list	*my_sort_list(t_list *lst, int (*cmp)(int, int))
 //------------------------------------AUXILIARY-------------------------------------
 
 
-static inline void	sort_neighbors(t_list *head, t_list *next, int (*cmp)(int, int))
+static  void	sort_neighbors(t_list *head, t_list *next, int (*cmp)(int, int))
 {
 	while (next)
 	{
@@ -37,7 +37,7 @@ static inline void	sort_neighbors(t_list *head, t_list *next, int (*cmp)(int, in
 	}
 }
 
-static inline void	data_swap(int *a, int *b)
+static  void	data_swap(int *a, int *b)
 {
 	int	tmp;
 
