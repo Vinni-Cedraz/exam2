@@ -6,79 +6,53 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 13:35:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/25 09:15:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:37:38 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-static short		is_divisible_by_three(int i);
-static short		is_divisible_by_five(int i);
-static short		is_divisible_by_seven(int i);
-static short 		is_divisible_by_eleven(int i);
-static short		is_divisible_by_three_and_five(int i);
-static void			print_number(int i);
+static int is_divisible_by_three(int i);
+static int is_divisible_by_five(int i);
+static int is_divisible_by_three_and_five(int i);
+static int putendl(char *s);
+static void print_number(int i);
+static void my_putchar(char c) { write(1, &c, 1); }
 
-int	main(void)
-{
-	int	i;
-
-	i = 1;
-	while (i <= 1000000)
-	{
-		if (is_divisible_by_three_and_five(i))
-			write(1, "FizzBuzz\n", 9);
-		else if (is_divisible_by_three(i))
-			write(1, "Fizz\n", 5);
-		else if (is_divisible_by_five(i))
-			write(1, "Buzz\n", 5);
-		else
-			print_number(i);
-		i++;
-	}
-	write(1, "\n", 1);
-}
-
-static  void	print_number(int number)
-{
-    static const char str[10] = {"0123456789"};
-    int digits[10];
+int main(void) {
     int i = 0;
 
-    while (number > 0) 
-	{
-        digits[i++] = number % 10;
-        number /= 10;
+    while (++i <= 100) {
+        if (is_divisible_by_three_and_five(i))
+            putendl("FizzBuzz");
+        else if (is_divisible_by_three(i))
+            putendl("Fizz");
+        else if (is_divisible_by_five(i))
+            putendl("Buzz");
+        else {
+            print_number(i);
+            putendl("");
+        }
     }
-    while (i > 0) 
-	{
-        i--;
-        write(1, &str[digits[i]], 1);
-    }
-	write(1, "\n", 1);
+    putendl("");
 }
 
-static  short	is_divisible_by_three(int i)
-{
-	return (!(i % 3));
+void print_number(int number) {
+    if (number > 9) print_number(number / 10);
+    my_putchar(number % 10 + '0');
 }
 
-static  short	is_divisible_by_five(int i)
-{
-	return (!(i % 5));
+int putendl(char *s) {
+    int count;
+    while (s && *s) count += write(1, s++, 1);
+    count += write(1, "\n", 1);
+    return (count);
 }
 
-static  short is_divisible_by_seven(int i)
-{
-	return (!(i % 7));
-}
+static int is_divisible_by_three(int i) { return (!(i % 3)); }
 
-static  short is_divisible_by_eleven(int i)
-{
-	return (! (i % 11));
-}
+static int is_divisible_by_five(int i) { return (!(i % 5)); }
 
-static  short	is_divisible_by_three_and_five(int i)
-{
-	return (!(i % 3) && !(i % 5));
+static int is_divisible_by_three_and_five(int i) {
+    return (!(i % 3) && !(i % 5));
 }

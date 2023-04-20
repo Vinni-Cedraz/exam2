@@ -1,71 +1,33 @@
 #include <unistd.h>
 
-static int			how_many_times(char c);
-static void 		repeat_alpha(char c, int j);
-static int			my_putchar(char c);
-static int			is_lower(char c);
-static int			is_upper(char c);
-static void			init_variables(char *, char **, int *, int *, char **);
+static void repeat_alpha(char c, int j);
+static int how_many_times(char c);
+static int my_putchar(char c) { return (write(1, &c, 1)); }
 
-int	main(int argc, char **argv)
-{
-	char	c;
-	char	*argv_str;
-	int		i;
-	int		j;
+int main(int argc, char **argv) {
+    char alpha = '*';
+    int i = 0;
 
-	if (argc != 2)
-		return(my_putchar('\n'));
-	init_variables(&c, &argv_str, &i, &j, argv);
-	while (c)
-	{
-		c = argv_str[i];
-		j = how_many_times(c);
-		repeat_alpha(c, j);
-		i++;
-	}
-	my_putchar('\n');
+    if (argc != 2) return (my_putchar('\n'));
+    while ((alpha = argv[1][i++])) repeat_alpha(alpha, how_many_times(alpha));
+    my_putchar('\n');
 }
 
-static void	init_variables(char *c, char **str, int *i, int *j, char **argv)
-{
-	str = argv;
-	*str = argv[1];
-	*c = '*';
-	*i = 0;
-	*j = 0;
+static void repeat_alpha(char c, int j) {
+    while (j--) my_putchar(c);
 }
 
-static  int	how_many_times(char c)
-{
-	int	times;
+static int is_lower(char c) { return (c <= 122 && c >= 97); }
+static int is_upper(char c) { return (c >= 65 && c <= 90); }
 
-	if (is_upper(c))
-		times = c - 64;
-	else if (is_lower(c))
-		times = c - 96;
-	else
-		times = 1;
-	return (times);
-}
+static int how_many_times(char c) {
+    int times;
 
-static  void repeat_alpha(char c, int j)
-{
-	while (j--)
-		my_putchar(c);
-}
-
-static  int	my_putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-static  int	is_lower(char c)
-{
-	return (c <= 122 && c >= 97);
-}
-
-static  int	is_upper(char c)
-{
-	return (c >= 65 && c <= 90);
+    if (is_upper(c))
+        times = c - 64;
+    else if (is_lower(c))
+        times = c - 96;
+    else
+        times = 1;
+    return (times);
 }
