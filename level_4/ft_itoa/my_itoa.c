@@ -6,23 +6,26 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 15:32:09 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/03/26 15:32:54 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/05/06 15:44:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
+#define INTMIN -2147483648
+
 static int numlen(int n);
 static void build_str(int nbr, char *str, char **iter);
+static char *dup(char *s, int n);
 
 char *my_itoa(int nbr) {
-    int strlen = numlen(nbr);
-    char *str = malloc(sizeof(char) * strlen);
+    if (nbr == INTMIN) return dup("-2147483648", 12);
+    int strlen = nbr == 0 ? 1 : numlen(nbr);
+    char *str = malloc(sizeof(char) * strlen + 1);
     char *iter = str;
     if (nbr < 0) *iter = '-', nbr *= -1, iter++;
     build_str(nbr, str, &iter);
     *iter = '\0';
-    if (nbr == __INT_MAX__) str[strlen - 1] = '8';
     return (str);
 }
 
@@ -36,6 +39,14 @@ static int numlen(int n) {
 static void build_str(int nbr, char *str, char **iter) {
     if (nbr > 9) build_str(nbr / 10, str, iter);
     *(*iter)++ = (nbr % 10) + '0';
+}
+
+static char *dup(char *s, int n) {
+    int i = -1;
+    char *dup = malloc((n + 1) * sizeof(char));
+    while (++i < n) *(dup + i) = *s++;
+	dup[i] = '\0';
+    return dup;
 }
 
 // ------------TESTS ---------------
@@ -69,7 +80,11 @@ int main(void) {
     test = my_itoa(-12999812);
     assert(!strcmp("-12999812", test));
     free(test);
-    test = my_itoa(-__INT_MAX__);
+    test = my_itoa(INTMIN);
+    assert(!strcmp("-2147483648", test));
+    free(test);
+
+    test = my_itoa(-2147483648);
     assert(!strcmp("-2147483648", test));
     free(test);
     printf("all tests passed!");

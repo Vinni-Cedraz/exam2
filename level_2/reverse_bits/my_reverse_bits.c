@@ -1,11 +1,13 @@
 #include "../print_bits/my_print_bits.c"
 
-unsigned char my_reverse_bits(unsigned char octet) {
-    unsigned char rev = 0;
+typedef unsigned char uc;
+
+uc my_reverse_bits(uc octet) {
+    uc rev = 0;
     short counter = 8;
     while (counter--) {
         rev <<= 1;
-        rev = (rev | (octet & 1));
+        rev |= (octet & 1);
         octet >>= 1;
     }
     return rev;
