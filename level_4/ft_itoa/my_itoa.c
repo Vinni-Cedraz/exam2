@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 15:32:09 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/05/06 15:44:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/05/07 12:17:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 
 static int numlen(int n);
 static void build_str(int nbr, char *str, char **iter);
-static char *dup(char *s, int n);
+static char *mstr(char *s, int n);
 
 char *my_itoa(int nbr) {
-    if (nbr == INTMIN) return dup("-2147483648", 12);
-    int strlen = nbr == 0 ? 1 : numlen(nbr);
+    if (nbr == INTMIN) return mstr("-2147483648", 12);
+    int strlen = numlen(nbr);
     char *str = malloc(sizeof(char) * strlen + 1);
     char *iter = str;
     if (nbr < 0) *iter = '-', nbr *= -1, iter++;
@@ -31,6 +31,7 @@ char *my_itoa(int nbr) {
 
 static int numlen(int n) {
     int len = 0;
+	if (n == 0) return 1;
     if (n < 0) len++, n *= -1;
     while (n) n /= 10, len++;
     return len;
@@ -41,12 +42,12 @@ static void build_str(int nbr, char *str, char **iter) {
     *(*iter)++ = (nbr % 10) + '0';
 }
 
-static char *dup(char *s, int n) {
+static char *mstr(char *s, int n) {
     int i = -1;
-    char *dup = malloc((n + 1) * sizeof(char));
-    while (++i < n) *(dup + i) = *s++;
-	dup[i] = '\0';
-    return dup;
+    char *mstr = (char *)malloc((n + 1) * sizeof(char));
+    while (++i < n) *(mstr + i) = *s++;
+	mstr[i] = '\0';
+    return mstr;
 }
 
 // ------------TESTS ---------------
