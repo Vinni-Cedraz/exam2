@@ -2,6 +2,8 @@
 static void print_arr(int *arr, unsigned int n);
 
 int my_max(int *arr, unsigned int n) {
+    if (n <= 0)
+        return ;
     int max = arr[0];
     for (unsigned int i = 1; i < n; i++)
         if (arr[i] > max)
@@ -10,6 +12,8 @@ int my_max(int *arr, unsigned int n) {
 }
 
 int my_min(int *arr, unsigned int n) {
+    if (n <= 0)
+        return ;
     int smallest = arr[0];
     for (unsigned int i = 1; i < n; i++)
         if (arr[i] < smallest)
